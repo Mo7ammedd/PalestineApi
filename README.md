@@ -7,4 +7,4 @@
  
 
 
-palestine-api is a simple Fastapi integrated with [palestine-datasets](https://github.com/TechForPalestine/palestine-datasets/tree/main). The main purpose is to make a quick and simple API for requesting the latest data available from palestine-datasets.
+palestine-api is a simple Api integrated with [palestine-datasets](https://github.com/TechForPalestine/palestine-datasets/tree/main). The main purpose is to make a quick and simple API for requesting the latest data available from palestine-datasets.
