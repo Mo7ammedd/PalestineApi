@@ -2,7 +2,7 @@
   <br>
   <img alt="Tech4Palestine" src="favicon.ico" width="300px">
   <h1>palestine API</h1>
-  <strong>A Simple Fastapi for https://data.techforpalestine.org/docs/datasets/</strong>
+  <strong>A Simple api for https://data.techforpalestine.org/docs/datasets/</strong>
 </div>
  
 
