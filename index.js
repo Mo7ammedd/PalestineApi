@@ -1,20 +1,17 @@
 const express = require('express');
 const axios = require('axios');
 const path = require('path');
-
 const app = express();
 const faviconPath = 'favicon.ico';
-
+const cors = require('cors');
 const casualtiesUrl = 'https://data.techforpalestine.org/api/v2/casualties_daily.min.json';
 const killedUrl = 'https://data.techforpalestine.org/api/v2/killed-in-gaza.min.json';
 const westbankUrl = 'https://data.techforpalestine.org/api/v2/west_bank_daily.min.json';
 
 let casualtiesCsv, killedCsv, westbankCsv;
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*'); 
-  next();
-});
+app.use(cors());
+app.options('*', cors());
 
 app.get('/', (req, res) => {
   res.send({ message: 'from the river to the see' });
