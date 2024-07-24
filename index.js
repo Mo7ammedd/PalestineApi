@@ -1,5 +1,4 @@
 const express = require('express');
-const axios = require('axios');
 const path = require('path');
 const app = express();
 const faviconPath = 'favicon.ico';
@@ -14,29 +13,32 @@ app.use(cors());
 app.options('*', cors());
 
 app.get('/', (req, res) => {
-  res.send({ message: 'from the river to the see' });
+  res.send({ message: 'from the river to the sea' });
 });
 
 app.get('/killed', async (req, res) => {
   if (!killedCsv) {
-    const response = await axios.get(killedUrl);
-    killedCsv = response.data;
+    const fetch = (await import('node-fetch')).default;
+    const response = await fetch(killedUrl);
+    killedCsv = await response.json();
   }
   res.json(killedCsv);
 });
 
 app.get('/casualties', async (req, res) => {
   if (!casualtiesCsv) {
-    const response = await axios.get(casualtiesUrl);
-    casualtiesCsv = response.data;
+    const fetch = (await import('node-fetch')).default;
+    const response = await fetch(casualtiesUrl);
+    casualtiesCsv = await response.json();
   }
   res.json(casualtiesCsv);
 });
 
 app.get('/westbank', async (req, res) => {
   if (!westbankCsv) {
-    const response = await axios.get(westbankUrl);
-    westbankCsv = response.data;
+    const fetch = (await import('node-fetch')).default;
+    const response = await fetch(westbankUrl);
+    westbankCsv = await response.json();
   }
   res.json(westbankCsv);
 });
