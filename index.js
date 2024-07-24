@@ -8,6 +8,11 @@ const killedUrl = 'https://data.techforpalestine.org/api/v2/killed-in-gaza.min.j
 const westbankUrl = 'https://data.techforpalestine.org/api/v2/west_bank_daily.min.json';
 
 let casualtiesCsv, killedCsv, westbankCsv;
+let fetch;
+
+(async () => {
+  fetch = (await import('node-fetch')).default;
+})();
 
 app.use(cors());
 app.options('*', cors());
@@ -18,7 +23,6 @@ app.get('/', (req, res) => {
 
 app.get('/killed', async (req, res) => {
   if (!killedCsv) {
-    const fetch = (await import('node-fetch')).default;
     const response = await fetch(killedUrl);
     killedCsv = await response.json();
   }
@@ -27,7 +31,6 @@ app.get('/killed', async (req, res) => {
 
 app.get('/casualties', async (req, res) => {
   if (!casualtiesCsv) {
-    const fetch = (await import('node-fetch')).default;
     const response = await fetch(casualtiesUrl);
     casualtiesCsv = await response.json();
   }
@@ -36,7 +39,6 @@ app.get('/casualties', async (req, res) => {
 
 app.get('/westbank', async (req, res) => {
   if (!westbankCsv) {
-    const fetch = (await import('node-fetch')).default;
     const response = await fetch(westbankUrl);
     westbankCsv = await response.json();
   }
